@@ -15,26 +15,29 @@ $SESSION_ID = intval($_SESSION['bid']);
 
 if($_SERVER['REQUEST_METHOD'] =='POST'){
 
-    if(empty($_POST["cname"]) || empty($_POST["Contact"]) || empty($_POST["Email"]) || empty($_POST["Cardnum"])) {
+    if(empty($_POST["cname"]) || empty($_POST["Contact"]) || empty($_POST["Email"]) || empty($_POST["Cardnumber"])) {
 
         echo "<span style='color:red; font-size:2em'>Please fill all fields!!</span>";
     }
     else{
-        $customer_name= $_POST["cname"];
-        $Contact= $_POST["Contact"];
-        $Email= $_POST["Email"];
-        $Cardnum= $_POST["Cardnum"];
+        
+        $customer_name = mysqli_real_escape_string($dbc,$_POST['cname']);
+        $Contact = mysqli_real_escape_string($dbc,$_POST['Contact']);
+        $Email = mysqli_real_escape_string($dbc,$_POST['Email']);
+        $Cardnumber = mysqli_real_escape_string($dbc,$_POST['Cardnumber']);
+       
             // insert customer details----------------------------------------------------
 
      $customer_data=" INSERT INTO `customers`(`customer_id`, `customer_name`, `email`, `contact_number`,`card_number`)
-      VALUES (null,'$customer_name','$Email','$Contact','$Cardnum')";
-      $resultcustomer_data = @mysqli_query($dbc, $customer_data);
+      VALUES (null,'$customer_name','$Email','$Contact','$Cardnumber')";
+      $resultcustomer_data = @mysqli_query($dbc, $customer_data) or die(mysqli_error($dbc));
+
       $last_id = mysqli_insert_id($dbc);
     //   echo $last_id;
     // Get book details----------------------------------------------------
     
         $Order = "SELECT * FROM bookinventory WHERE product_id = {$SESSION_ID}";
-        $getorder = @mysqli_query($dbc, $Order);
+        $getorder = @mysqli_query($dbc, $Order) or die(mysqli_error($dbc));
         $rows = @mysqli_fetch_array($getorder);
         $product_id = $rows["product_id"];
         $product_name = $rows["name"];
@@ -43,13 +46,13 @@ if($_SERVER['REQUEST_METHOD'] =='POST'){
             $invenorderQuery = "INSERT INTO bookinventoryorder (order_id, product_id,customer_id) 
             VALUES (null,'{$product_id}','{$last_id}')";
 
-        $order_item = @mysqli_query($dbc,$invenorderQuery);
+        $order_item = @mysqli_query($dbc,$invenorderQuery)or die(mysqli_error($dbc));
         $orderedItem = @mysqli_fetch_array($order_item);
 
         echo "  <br><b><span style='color:red;font-size:2em'>Your Order Book Name - ". $product_name ." is Booked !!</span>";
     // Update Quantiy of particular item in bookinventory table-----------------
         $updateQuery = "UPDATE bookinventory SET quantity = quantity - 1 WHERE product_id= {$SESSION_ID}";
-        $update_table = @mysqli_query($dbc, $updateQuery);
+        $update_table = @mysqli_query($dbc, $updateQuery) or die(mysqli_error($dbc));
 
         unset ($_SESSION['bid']);
         session_destroy();
@@ -63,13 +66,13 @@ if($_SERVER['REQUEST_METHOD'] =='POST'){
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>Checkout</title>
+    <title>Book Store</title>
 </head>
 <H1>Checkout Form</H1>
 
 <span><a href=index.php>home </a></span>
 <span><a href=store.php>book store </a></span>
-<span><a href=checkout.php>checkout </a></span>
+<!-- <span><a href=checkout.php>checkout </a></span> -->
 <body>
     <form role="form" action= "checkout.php?bid=<?php echo $SESSION_ID ;?>" method="post">
         <div class="form-group row">
@@ -93,7 +96,7 @@ if($_SERVER['REQUEST_METHOD'] =='POST'){
         <div class="form-group row">
             <label for="inputcardnum" class="col-sm-2 col-form-label">Card Number</label>
             <div class="col-sm-4">
-                <input type="number" class="form-control" id="" name="Cardnum" placeholder="card number" maxlength="12">
+                <input type="number" class="form-control" id="" name="Cardnumber" placeholder="card number" maxlength="12">
             </div>
         </div>
         <div class="form-group row">
@@ -104,6 +107,11 @@ if($_SERVER['REQUEST_METHOD'] =='POST'){
        
     </form>
 
+    <footer class="footer-end">
+        <p>
+            All rights reserved 2020 © Book Store<br> Gaganpreet Kaur
 
+        </p>
+    </footer>
 </body>
 </html>

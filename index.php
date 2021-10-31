@@ -20,7 +20,7 @@ $result = @mysqli_query($dbc, $query);
 
 <span><a href=index.php>home </a></span>
 <span><a href=store.php>book store </a></span>
-<span><a href=checkout.php>checkout </a></span>
+<!-- <span><a href=checkout.php>checkout </a></span> -->
 
 <body>
     <main>
@@ -31,6 +31,14 @@ $result = @mysqli_query($dbc, $query);
         </div>
 
     </main>
+ 
+
+    <footer class="footer-end">
+        <p>
+            All rights reserved 2020 © Book Store<br> Gaganpreet Kaur
+
+        </p>
+    </footer>
 </body>
 
 </html>
