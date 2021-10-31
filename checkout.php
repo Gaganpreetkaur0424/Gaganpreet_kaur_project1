@@ -65,10 +65,11 @@ if($_SERVER['REQUEST_METHOD'] =='POST'){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Checkout</title>
 </head>
+<H1>Checkout Form</H1>
+
 <span><a href=index.php>home </a></span>
 <span><a href=store.php>book store </a></span>
 <span><a href=checkout.php>checkout </a></span>
-<H1>Checkout Form</H1>
 <body>
     <form role="form" action= "checkout.php?bid=<?php echo $SESSION_ID ;?>" method="post">
         <div class="form-group row">

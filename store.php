@@ -14,6 +14,8 @@ $result = @mysqli_query($dbc, $query);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Book Store</title>
 </head>
+<h1>STORE</h1>
+
 <span><a href=index.php>home </a></span>
 <span><a href=store.php>book store </a></span>
 <span><a href=checkout.php>checkout </a></span><body>

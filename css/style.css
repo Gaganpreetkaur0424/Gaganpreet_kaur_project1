@@ -4,11 +4,7 @@
 
 body {
     font-family: Tahoma, Arial, sans-serif;
-    background-color: #ffffff;
     color: #000000;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     margin: 0px;
 }
 
@@ -19,6 +15,24 @@ main {
     padding-top: 2em;
     padding-bottom: 2em;
     width: 100%;
+}
+
+.banner_text {
+    padding: 12%;
+    font-size: 30px;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.banner_image {
+    background-image: url("../uploads/banner.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    height: 70vh;
+    width: 100%;
+    background-repeat: no-repeat;
 }
 
 .single-book-in-grid:hover {

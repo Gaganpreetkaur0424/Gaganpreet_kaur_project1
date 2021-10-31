@@ -6,6 +6,7 @@ $result = @mysqli_query($dbc, $query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,14 +15,22 @@ $result = @mysqli_query($dbc, $query);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Book Store</title>
 </head>
+
+<h1>HOME</h1>
+
 <span><a href=index.php>home </a></span>
 <span><a href=store.php>book store </a></span>
 <span><a href=checkout.php>checkout </a></span>
+
 <body>
     <main>
-        <div class="row">
-           test
+        <div class="banner_image">
+            <div class="banner_text">
+                <h1><strong> BOOK STORE </strong></h1>
+            </div>
         </div>
+
     </main>
 </body>
+
 </html>
