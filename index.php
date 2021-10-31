@@ -20,7 +20,7 @@ $result = @mysqli_query($dbc, $query);
 <body>
     <main>
         <div class="row">
-           
+           test
         </div>
     </main>
 </body>
