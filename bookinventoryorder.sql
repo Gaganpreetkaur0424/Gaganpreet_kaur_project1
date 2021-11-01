@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2021 at 06:05 AM
+-- Generation Time: Nov 01, 2021 at 02:42 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -38,10 +38,9 @@ CREATE TABLE `bookinventoryorder` (
 --
 
 INSERT INTO `bookinventoryorder` (`order_id`, `product_id`, `customer_id`) VALUES
-(1, 1, 4),
-(2, 2, 5),
-(3, 1, 6),
-(4, 2, 7);
+(1, 1, 1),
+(2, 3, 2),
+(3, 3, 3);
 
 --
 -- Indexes for dumped tables
@@ -61,7 +60,7 @@ ALTER TABLE `bookinventoryorder`
 -- AUTO_INCREMENT for table `bookinventoryorder`
 --
 ALTER TABLE `bookinventoryorder`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
